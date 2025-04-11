@@ -16,17 +16,14 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
       animation: flicker 0.1s infinite, wiggle 6s infinite;
     }
-
     @keyframes flicker {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.96; }
     }
-
     @keyframes wiggle {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.01); }
     }
-
     .scanlines {
       position: fixed;
       top: 0;
@@ -39,12 +36,10 @@
       animation: scanMove 1s linear infinite;
       z-index: 99;
     }
-
     @keyframes scanMove {
       0% { background-position: 0 0; }
       100% { background-position: 0 100%; }
     }
-
     .vhs-timer {
       font-family: 'Press Start 2P', monospace;
       font-size: 14px;
@@ -54,7 +49,6 @@
       left: 10px;
       z-index: 100;
     }
-
     .rec {
       font-family: 'Press Start 2P', monospace;
       font-size: 14px;
@@ -65,11 +59,9 @@
       z-index: 100;
       animation: blink 1s step-start infinite;
     }
-
     @keyframes blink {
       50% { opacity: 0; }
     }
-
     .polaroid {
       display: inline-block;
       background: white;
@@ -80,17 +72,14 @@
       border-radius: 10px;
       transition: transform 0.2s ease;
     }
-
     .polaroid:hover {
       transform: rotate(-1deg) scale(1.03);
     }
-
     .polaroid img {
       max-width: 220px;
       height: auto;
       border-radius: 5px;
     }
-
     .caption {
       margin-top: 10px;
       font-size: 15px;
@@ -98,7 +87,6 @@
       font-weight: bold;
       text-shadow: none;
     }
-
     .letter {
       margin: 60px auto;
       padding: 20px;
@@ -109,30 +97,25 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
-
     .floating {
       position: absolute;
       width: 100px;
       animation: float 6s ease-in-out infinite;
       z-index: 1;
     }
-
     .float1 { top: 50px; left: 30px; animation-delay: 0s; }
     .float2 { top: 200px; right: 50px; animation-delay: 2s; }
     .float3 { bottom: 100px; left: 20%; animation-delay: 1s; }
     .float4 { top: 300px; right: 20%; animation-delay: 3s; }
-
     @keyframes float {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
     }
-
     .gallery {
       position: relative;
       z-index: 2;
     }
-
     #music-button {
       position: fixed;
       bottom: 30px;
@@ -140,9 +123,8 @@
       width: 80px;
       cursor: pointer;
       animation: pulse 2s infinite;
-      z-index: 9999; /* updated so it's always on top */
+      z-index: 1000;
     }
-
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.15); }
@@ -151,15 +133,16 @@
   </style>
 </head>
 <body>
-  <!-- VHS UI -->
+  <!-- VHS UI Elements -->
   <div class="scanlines"></div>
   <div class="vhs-timer" id="vhs-timer">PLAY – 00:00:00</div>
   <div class="rec">⬤ REC</div>
 
-  <!-- Music Button -->
-  <img src="images/IMG_0421.PNG" id="music-button" alt="Play Music" onclick="document.getElementById('bg-music').play(); document.getElementById('noise-audio').play();">
+  <!-- Floating Music Button -->
+  <img src="images/IMG_0421.PNG" id="music-button" alt="Play Music"
+       onclick="document.getElementById('bg-music').play(); document.getElementById('noise-audio').play();">
 
-  <!-- Audio -->
+  <!-- Audio Elements -->
   <audio id="bg-music" loop>
     <source src="calling.mp3" type="audio/mpeg" />
   </audio>
@@ -167,19 +150,35 @@
     <source src="white-noise.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Decorations -->
+  <!-- Floating Decorations -->
   <img src="images/gengar.png" class="floating float1" alt="Gengar" />
   <img src="images/paintbrushes.png" class="floating float2" alt="Paintbrushes" />
   <img src="images/matching_glasses.png" class="floating float3" alt="Matching Glasses" />
   <img src="images/whiteboard_basketball.png" class="floating float4" alt="Basketball & Math" />
 
-  <!-- Photo Gallery -->
+  <!-- Polaroid Gallery -->
   <div class="gallery">
-    <!-- Add your 20 photos here as needed -->
-    <div class="polaroid"><img src="images/photo1.jpg" alt="Photo 1"><div class="caption">Thumbs up, always</div></div>
-    <div class="polaroid"><img src="images/photo2.jpg" alt="Photo 2"><div class="caption">Rickshaw ride</div></div>
-    <div class="polaroid"><img src="images/photo3.jpg" alt="Photo 3"><div class="caption">Helmets</div></div>
-    <!-- etc... up to photo20.jpg -->
+    <!-- All 20 photos -->
+    <div class="polaroid"><img src="images/photo1.jpg"><div class="caption">Thumbs up, always</div></div>
+    <div class="polaroid"><img src="images/photo2.jpg"><div class="caption">Rickshaw ride</div></div>
+    <div class="polaroid"><img src="images/photo3.jpg"><div class="caption">Helmets</div></div>
+    <div class="polaroid"><img src="images/photo4.jpg"><div class="caption">Sole mates</div></div>
+    <div class="polaroid"><img src="images/photo5.jpg"><div class="caption">Ice cream & blue</div></div>
+    <div class="polaroid"><img src="images/photo6.jpg"><div class="caption">River breeze</div></div>
+    <div class="polaroid"><img src="images/photo7.jpg"><div class="caption">Shadows</div></div>
+    <div class="polaroid"><img src="images/photo8.jpg"><div class="caption">Built with love</div></div>
+    <div class="polaroid"><img src="images/photo9.jpg"><div class="caption">Your hug is home</div></div>
+    <div class="polaroid"><img src="images/photo10.jpg"><div class="caption">Above the trees</div></div>
+    <div class="polaroid"><img src="images/photo11.jpg"><div class="caption">Mirror world</div></div>
+    <div class="polaroid"><img src="images/photo12.jpg"><div class="caption">Matching pins</div></div>
+    <div class="polaroid"><img src="images/photo13.jpg"><div class="caption">Lovebirds</div></div>
+    <div class="polaroid"><img src="images/photo14.jpg"><div class="caption">Laugh view</div></div>
+    <div class="polaroid"><img src="images/photo15.jpg"><div class="caption">Smug look</div></div>
+    <div class="polaroid"><img src="images/photo16.jpg"><div class="caption">Forever stare</div></div>
+    <div class="polaroid"><img src="images/photo17.jpg"><div class="caption">Pink car vibes</div></div>
+    <div class="polaroid"><img src="images/photo18.jpg"><div class="caption">Case + bouquet</div></div>
+    <div class="polaroid"><img src="images/photo19.jpg"><div class="caption">Movie date chaos</div></div>
+    <div class="polaroid"><img src="images/photo20.jpg"><div class="caption">Perfect day</div></div>
   </div>
 
   <!-- Love Letter -->
@@ -204,7 +203,6 @@
       const secs = String(s % 60).padStart(2, '0');
       return `${hrs}:${mins}:${secs}`;
     }
-
     setInterval(() => {
       seconds++;
       document.getElementById('vhs-timer').textContent = `PLAY – ${formatTime(seconds)}`;
@@ -212,6 +210,7 @@
   </script>
 </body>
 </html>
+
 
 
 
