@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <title>Our Love Story</title>
+  <!-- Retro Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <style>
     body {
       background: url("images/xqc.png") no-repeat center center fixed;
@@ -13,6 +16,17 @@
       overflow-x: hidden;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
       margin: 0;
+      animation: flicker 0.1s infinite, wiggle 6s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.96; }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.01); }
     }
 
     .scanlines {
@@ -34,7 +48,7 @@
     }
 
     .vhs-timer {
-      font-family: 'Courier New', monospace;
+      font-family: 'Press Start 2P', monospace;
       font-size: 14px;
       color: white;
       position: fixed;
@@ -127,30 +141,46 @@
 
   <h1>亚伦和扎里法周年纪念日</h1>
 
-  <!-- ❤️ Pulsing Music Button -->
+  <!-- ❤️ Music Button -->
   <img src="images/IMG_0421.PNG" id="music-button" alt="Play Music" onclick="document.getElementById('bg-music').play()">
 
-  <!-- 🎶 Hidden Audio -->
+  <!-- 🎶 Audio -->
   <audio id="bg-music" loop>
     <source src="calling.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- 💫 Floating decorations -->
+  <!-- 💫 Floating Decorations -->
   <img src="images/gengar.png" class="floating float1" alt="Gengar">
   <img src="images/paintbrushes.png" class="floating float2" alt="Paintbrushes">
   <img src="images/matching_glasses.png" class="floating float3" alt="Matching Glasses">
   <img src="images/whiteboard_basketball.png" class="floating float4" alt="Basketball & Math">
 
   <!-- 🖼️ Photo Gallery -->
-  <div class="gallery">
-    <!-- 20 Polaroids -->
-    <!-- paste or loop these in -->
-    <!-- Only showing a few here for brevity -->
-    <div class="polaroid"><img src="images/photo1.jpg" alt="Thumbs up, always"><div class="caption">Thumbs up, always</div></div>
-    <div class="polaroid"><img src="images/photo2.jpg" alt="That rickshaw ride where time slowed down"><div class="caption">That rickshaw ride where time slowed down</div></div>
-    <!-- ... photo3.jpg to photo20.jpg in same format -->
-  </div>
+<div class="gallery">
+  <div class="polaroid"><img src="images/photo1.jpg" alt="Thumbs up, always"><div class="caption">Thumbs up, always</div></div>
+  <div class="polaroid"><img src="images/photo2.jpg" alt="Rickshaw ride"><div class="caption">Rickshaw ride</div></div>
+  <div class="polaroid"><img src="images/photo3.jpg" alt="Helmets"><div class="caption">Helmets</div></div>
+  <div class="polaroid"><img src="images/photo4.jpg" alt="Sole mates"><div class="caption">Sole mates</div></div>
+  <div class="polaroid"><img src="images/photo5.jpg" alt="Ice cream & blue"><div class="caption">Ice cream & blue</div></div>
+  <div class="polaroid"><img src="images/photo6.jpg" alt="River breeze"><div class="caption">River breeze</div></div>
+  <div class="polaroid"><img src="images/photo7.jpg" alt="Shadows"><div class="caption">Shadows</div></div>
+  <div class="polaroid"><img src="images/photo8.jpg" alt="Built with love"><div class="caption">Built with love</div></div>
+  <div class="polaroid"><img src="images/photo9.jpg" alt="Your hug is home"><div class="caption">Your hug is home</div></div>
+  <div class="polaroid"><img src="images/photo10.jpg" alt="Above the trees"><div class="caption">Above the trees</div></div>
+  <div class="polaroid"><img src="images/photo11.jpg" alt="Mirror world"><div class="caption">Mirror world</div></div>
+  <div class="polaroid"><img src="images/photo12.jpg" alt="Matching pins"><div class="caption">Matching pins</div></div>
+  <div class="polaroid"><img src="images/photo13.jpg" alt="Lovebirds"><div class="caption">Lovebirds</div></div>
+  <div class="polaroid"><img src="images/photo14.jpg" alt="Laugh view"><div class="caption">Laugh view</div></div>
+  <div class="polaroid"><img src="images/photo15.jpg" alt="Smug look"><div class="caption">Smug look</div></div>
+  <div class="polaroid"><img src="images/photo16.jpg" alt="Forever stare"><div class="caption">Forever stare</div></div>
+  <div class="polaroid"><img src="images/photo17.jpg" alt="Pink car vibes"><div class="caption">Pink car vibes</div></div>
+  <div class="polaroid"><img src="images/photo18.jpg" alt="Case + bouquet"><div class="caption">Case + bouquet</div></div>
+  <div class="polaroid"><img src="images/photo19.jpg" alt="Movie date chaos"><div class="caption">Movie date chaos</div></div>
+  <div class="polaroid"><img src="images/photo20.jpg" alt="Perfect day"><div class="caption">Perfect day</div></div>
+</div>
+
+
 
   <!-- 💌 Love Letter -->
   <div class="letter">
@@ -165,7 +195,7 @@
     <p style="text-align:right;">With all my heart,<br>Doggo 💛</p>
   </div>
 
-  <!-- 🕒 VHS Timer Script -->
+  <!-- ⏱ VHS Timer Script -->
   <script>
     let seconds = 0;
     function formatTime(s) {
@@ -182,5 +212,3 @@
   </script>
 </body>
 </html>
-
-
