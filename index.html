@@ -12,57 +12,36 @@
       color: #fefefe;
       overflow-x: hidden;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      margin: 0;
     }
 
-    /* VHS Overlay */
-    .vhs-overlay {
+    .scanlines {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("images/scanlines.png");
-      background-size: cover;
       pointer-events: none;
-      mix-blend-mode: soft-light;
-      opacity: 0.15;
-      z-index: 999;
+      background: url("images/scanlines.png") repeat;
+      mix-blend-mode: overlay;
+      animation: scanMove 1s linear infinite;
+      z-index: 99;
     }
 
-    .vhs-timestamp {
-      position: fixed;
-      top: 10px;
-      left: 15px;
+    @keyframes scanMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+
+    .vhs-timer {
+      font-family: 'Courier New', monospace;
       font-size: 14px;
-      font-family: monospace;
-      color: #c0c0c0;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 3px 6px;
-      border-radius: 4px;
-      z-index: 1000;
-      text-shadow: 0 0 2px black;
+      color: white;
+      position: fixed;
+      top: 5px;
+      left: 10px;
+      z-index: 100;
     }
-
-    /* Psychedelic blobs */
-    @keyframes blobMove {
-      0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.2) translate(20px, -30px); }
-      100% { transform: scale(1) translate(0, 0); }
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #d77bff, #4b0082);
-      opacity: 0.4;
-      filter: blur(40px);
-      z-index: 0;
-      animation: blobMove 10s ease-in-out infinite;
-    }
-
-    .blob1 { width: 300px; height: 300px; top: 20%; left: 10%; animation-delay: 0s; }
-    .blob2 { width: 250px; height: 250px; top: 60%; left: 30%; animation-delay: 2s; }
-    .blob3 { width: 400px; height: 400px; top: 40%; left: 70%; animation-delay: 4s; }
 
     .polaroid {
       display: inline-block;
@@ -105,7 +84,7 @@
       position: absolute;
       width: 100px;
       animation: float 6s ease-in-out infinite;
-      z-index: 0;
+      z-index: 1;
     }
 
     .float1 { top: 50px; left: 30px; animation-delay: 0s; }
@@ -117,6 +96,11 @@
       0% { transform: translateY(0px); }
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
+    }
+
+    .gallery {
+      position: relative;
+      z-index: 2;
     }
 
     #music-button {
@@ -134,43 +118,41 @@
       50% { transform: scale(1.15); }
       100% { transform: scale(1); }
     }
-
-    .gallery {
-      position: relative;
-      z-index: 1;
-    }
   </style>
 </head>
 <body>
+  <!-- VHS Scanlines & Timer -->
+  <div class="scanlines"></div>
+  <div class="vhs-timer" id="vhs-timer">PLAY – 00:00:00</div>
 
-  <!-- VHS vibe layers -->
-  <div class="vhs-overlay"></div>
-  <div class="vhs-timestamp">PLAY — 00:02:41</div>
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-
-  <!-- Title -->
   <h1>亚伦和扎里法周年纪念日</h1>
 
-  <!-- Play Button -->
+  <!-- ❤️ Pulsing Music Button -->
   <img src="images/IMG_0421.PNG" id="music-button" alt="Play Music" onclick="document.getElementById('bg-music').play()">
+
+  <!-- 🎶 Hidden Audio -->
   <audio id="bg-music" loop>
     <source src="calling.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
-  <!-- Floating themed decorations -->
+  <!-- 💫 Floating decorations -->
   <img src="images/gengar.png" class="floating float1" alt="Gengar">
   <img src="images/paintbrushes.png" class="floating float2" alt="Paintbrushes">
   <img src="images/matching_glasses.png" class="floating float3" alt="Matching Glasses">
   <img src="images/whiteboard_basketball.png" class="floating float4" alt="Basketball & Math">
 
-  <!-- Gallery (photos go here, unchanged) -->
+  <!-- 🖼️ Photo Gallery -->
   <div class="gallery">
-    <!-- All your <div class="polaroid"> ... </div> go here -->
+    <!-- 20 Polaroids -->
+    <!-- paste or loop these in -->
+    <!-- Only showing a few here for brevity -->
+    <div class="polaroid"><img src="images/photo1.jpg" alt="Thumbs up, always"><div class="caption">Thumbs up, always</div></div>
+    <div class="polaroid"><img src="images/photo2.jpg" alt="That rickshaw ride where time slowed down"><div class="caption">That rickshaw ride where time slowed down</div></div>
+    <!-- ... photo3.jpg to photo20.jpg in same format -->
   </div>
 
-  <!-- Love letter (unchanged) -->
+  <!-- 💌 Love Letter -->
   <div class="letter">
     <h2>To my favorite person,</h2>
     <p>There are entire galaxies that have never known your smile — and that feels unfair.</p>
@@ -182,6 +164,23 @@
     <p>Happy anniversary, Otter. I’m yours — in every language, in every lifetime, in every line of code.</p>
     <p style="text-align:right;">With all my heart,<br>Doggo 💛</p>
   </div>
+
+  <!-- 🕒 VHS Timer Script -->
+  <script>
+    let seconds = 0;
+    function formatTime(s) {
+      const hrs = String(Math.floor(s / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+      const secs = String(s % 60).padStart(2, '0');
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    setInterval(() => {
+      seconds++;
+      document.getElementById('vhs-timer').textContent = `PLAY – ${formatTime(seconds)}`;
+    }, 1000);
+  </script>
 </body>
 </html>
+
 
