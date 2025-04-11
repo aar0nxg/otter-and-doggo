@@ -12,8 +12,8 @@
       text-align: center;
       color: #fefefe;
       overflow-x: hidden;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
       margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
       animation: flicker 0.1s infinite, wiggle 6s infinite;
     }
     @keyframes flicker {
@@ -130,23 +130,10 @@
       50% { transform: scale(1.15); }
       100% { transform: scale(1); }
     }
-    .tape-frame {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url("images/tape-frame.png") no-repeat center center;
-      background-size: cover;
-      z-index: 98;
-      pointer-events: none;
-      opacity: 0.4;
-    }
   </style>
 </head>
 <body>
-  <!-- Tape Overlay + Scanlines -->
-  <div class="tape-frame"></div>
+  <!-- VHS UI -->
   <div class="scanlines"></div>
   <div class="vhs-timer" id="vhs-timer">PLAY – 00:00:00</div>
   <div class="rec">⬤ REC</div>
@@ -154,9 +141,13 @@
   <!-- Music Button -->
   <img src="images/IMG_0421.PNG" id="music-button" alt="Play Music" onclick="document.getElementById('bg-music').play(); document.getElementById('noise-audio').play();">
 
-  <!-- Music + White Noise -->
-  <audio id="bg-music" loop><source src="calling.mp3" type="audio/mpeg" /></audio>
-  <audio id="noise-audio" loop><source src="white-noise.mp3" type="audio/mpeg" /></audio>
+  <!-- Audio -->
+  <audio id="bg-music" loop>
+    <source src="calling.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="noise-audio" loop>
+    <source src="white-noise.mp3" type="audio/mpeg" />
+  </audio>
 
   <!-- Decorations -->
   <img src="images/gengar.png" class="floating float1" alt="Gengar" />
@@ -166,11 +157,11 @@
 
   <!-- Photo Gallery -->
   <div class="gallery">
-    <!-- Just a few samples shown here -->
+    <!-- Just example structure — include all 20 like this -->
     <div class="polaroid"><img src="images/photo1.jpg" alt="Photo 1"><div class="caption">Thumbs up, always</div></div>
     <div class="polaroid"><img src="images/photo2.jpg" alt="Photo 2"><div class="caption">Rickshaw ride</div></div>
     <div class="polaroid"><img src="images/photo3.jpg" alt="Photo 3"><div class="caption">Helmets</div></div>
-    <!-- keep all 20 photos just like this -->
+    <!-- ...repeat through photo20.jpg -->
   </div>
 
   <!-- Love Letter -->
@@ -186,7 +177,7 @@
     <p style="text-align:right;">With all my heart,<br>Doggo 💛</p>
   </div>
 
-  <!-- VHS Timer Script -->
+  <!-- VHS Timer -->
   <script>
     let seconds = 0;
     function formatTime(s) {
@@ -202,4 +193,5 @@
   </script>
 </body>
 </html>
+
 
