@@ -4,12 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Our Love Story</title>
-    <!-- 🎵 Background Music Button -->
-<button onclick="document.getElementById('bg-music').play()">▶️ Play Our Song</button>
-<audio id="bg-music" loop>
-  <source src="calling.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
     <style>
     body {
         background: linear-gradient(to bottom, #4b0082, #800080, #dda0dd);
@@ -77,7 +71,12 @@
 </head>
 <body>
     <h1>Our Love Story</h1>
-    
+      <!-- 🎵 Background Music Button (must be in body!) -->
+  <button onclick="document.getElementById('bg-music').play()">▶️ Play Our Song</button>
+  <audio id="bg-music" loop>
+    <source src="calling.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
     <!-- Floating themed decorations -->
     <img src="images/gengar.png" class="floating float1" alt="Gengar">
     <img src="images/paintbrushes.png" class="floating float2" alt="Paintbrushes">
